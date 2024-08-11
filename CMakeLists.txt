@@ -15,7 +15,7 @@
 cmake_minimum_required(VERSION 3.24)
 
 project(SwiftFoundationICU
-    LANGUAGES CXX Swift)
+    LANGUAGES CXX)
 
 option(BUILD_SHARED_LIBS "build shared libraries" ON)
 
@@ -73,12 +73,6 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL WASI)
 else()
     add_compile_definitions(
         $<$<COMPILE_LANGUAGE:C,CXX>:U_TIMEZONE=timezone>)
-endif()
-
-if(BUILD_SHARED_LIBS)
-    set(install_directory swift)
-else()
-    set(install_directory swift_static)
 endif()
 
 if(NOT SWIFT_SYSTEM_NAME)
